@@ -1,8 +1,7 @@
 'use client'
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaPen, FaPhone } from 'react-icons/fa';
-import { Input } from '../ui/input';
 import {
   Select,
   SelectContent,
@@ -12,15 +11,106 @@ import {
   SelectValue,
 } from '../ui/select';
 import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { JoinUsInput } from '../join-us-input';
+import { Button } from '../ui/button';
+import emailjs from '@emailjs/browser';
+
+const contactSchema = z.object({
+  name: z
+    .string({
+      required_error: 'O nome é obrigatório.',
+    })
+    .refine((arg) => !!arg, 'O nome é obrigatório.'),
+  email: z
+    .string({
+      required_error: 'O e-mail é obrigatório.',
+    })
+    .email({ message: 'O email deve ser válido.' })
+    .refine((arg) => !!arg, 'O e-mail é obrigatório.'),
+  phone: z
+    .string({
+      required_error: 'Informe um celular.',
+    })
+    .regex(/^\(\d{2}\) \d{5}-\d{4}$/, {
+      message: 'Informe um celular válido.',
+    })
+    .refine((arg) => !!arg, 'O celular é obrigatório.'),
+  companyname: z.string({
+    required_error: 'O nome da empresa é obrigatório.',
+  })
+    .refine((arg) => !!arg, 'O empresa é obrigatório.'),
+  revenue: z.string({
+    required_error: 'A receita é obrigatório.',
+  })
+    .refine((arg) => !!arg, 'A receita é obrigatório.'),
+  segment: z.string({
+    required_error: 'O segmento é obrigatório.',
+  })
+    .refine((arg) => !!arg, 'O segmento é obrigatório.'),
+  cnpj: z
+    .string({
+      required_error: 'O nome é obrigatório.',
+    })
+    .refine((arg) => !!arg, 'O nome é obrigatório.'),
+})
+
+type ContactSchema = z.infer<typeof contactSchema>;
+
+const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
+const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+
 
 export const Contact = () => {
+  const [isLoading, setLoading] = useState(false);
+  const [showCNPJInput, setShowCNPJInput] = useState(false);
 
-  const { control, handleSubmit } = useForm();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  const { control, handleSubmit, register, reset, formState: { errors }, } = useForm<ContactSchema>({
+    resolver: zodResolver(contactSchema),
+  });
+  console.log(errors);
+
+
+  async function onSubmit(data: ContactSchema) {
+    setLoading(true);
+    try {
+      const result = await emailjs.send(
+        serviceId!,
+        templateId!,
+        {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          companyname: data.companyname,
+          revenue: data.revenue,
+          segment: data.segment,
+          cnpj: data.cnpj,
+        },
+        userId
+      );
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      console.log('User ID:', userId);
+
+      console.log(result.text);
+      reset({
+        name: '',
+        email: '',
+        phone: '',
+        companyname: '',
+        revenue: '',
+        segment: '',
+        cnpj: '',
+      });
+    } catch (error) {
+      console.error('Erro ao enviar e-mail:', error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className='bg-[#131313] text-white flex flex-col lg:flex-row items-center lg:justify-between p-4 lg:p-6 w-full min-h-screen'>
@@ -88,31 +178,39 @@ export const Contact = () => {
       <div className='w-full lg:w-[481px] p-4 lg:p-6 rounded-lg shadow-lg border border-white lg:mr-[150px]'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='mb-4'>
-            <Input
-              type='text'
-              placeholder='Qual seu nome?'
-              className='w-full p-3 rounded bg-white text-black placeholder-gray-500'
+            <JoinUsInput
+              id='name'
+              placeholder="Seu nome completo"
+              {...register('name')}
+              errors={errors}
             />
           </div>
           <div className='mb-4'>
-            <Input
+            <JoinUsInput
+              id="email"
               type='email'
+              errors={errors}
               placeholder='E-mail corporativo'
-              className='w-full p-3 rounded bg-white text-black placeholder-gray-500'
+              {...register('email')}
             />
           </div>
           <div className='mb-4'>
-            <Input
+            <JoinUsInput
+              id="phone"
+              errors={errors}
               type='text'
               placeholder='Seu Telefone'
-              className='w-full p-3 rounded bg-white text-black placeholder-gray-500'
+              {...register('phone')}
+              mask="(99) 99999-9999"
             />
           </div>
           <div className='mb-4'>
-            <Input
+            <JoinUsInput
+              id="companyname"
+              errors={errors}
               type='text'
               placeholder='Qual o nome da sua empresa?'
-              className='w-full p-3 rounded bg-white text-black placeholder-gray-500'
+              {...register('companyname')}
             />
           </div>
           <div className='mb-4'>
@@ -145,17 +243,69 @@ export const Contact = () => {
                 </div>
               )}
             />
+            {errors.revenue && <p className="text-[#e50914] text-sm mt-1">{errors.revenue.message}</p>}
           </div>
-          <div className='mb-6'>
-            <Input
-              type='text'
-              placeholder='Qual o seu segmento?'
-              className='w-full p-3 rounded bg-white text-black placeholder-gray-500'
+          <div className='mb-4 relative w-full'>
+            <Controller
+              control={control}
+              name='segment'
+              render={({ field }) => (
+                <div>
+                  <Select
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      setShowCNPJInput(value === 'Serviço' || value === 'Indústria');
+                    }}
+                    value={field.value}
+                    disabled={field.disabled}
+                  >
+                    <SelectTrigger className='w-full bg-white text-black p-2 border border-gray-300 rounded-md text-left sm:p-3'>
+                      <SelectValue placeholder='Qual o seu segmento?' />
+                    </SelectTrigger>
+                    <SelectContent className='bg-white text-left z-50 absolute'>
+                      <SelectGroup>
+                        <SelectItem value='Serviço'>Serviço</SelectItem>
+                        <SelectItem value='Varejo'>Varejo</SelectItem>
+                        <SelectItem value='Indústria'>Indústria</SelectItem>
+                        <SelectItem value='E-commerce'>E-commerce</SelectItem>
+                        <SelectItem value='Food Service'>Food Service</SelectItem>
+                        <SelectItem value='Educação'>Educação</SelectItem>
+                        <SelectItem value='Imobiliária'>Imobiliária</SelectItem>
+                        <SelectItem value='SAAS'>SAAS</SelectItem>
+                        <SelectItem value='Finanças'>Finanças</SelectItem>
+                        <SelectItem value='Franquia'>Franquia</SelectItem>
+                        <SelectItem value='Telecom'>Telecom</SelectItem>
+                        <SelectItem value='Energia Solar'>Energia Solar</SelectItem>
+                        <SelectItem value='Turismo'>Turismo</SelectItem>
+                        <SelectItem value='Outro'>Outro</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
             />
+            {errors.segment && <p className="text-[#e50914] text-sm mt-1">{errors.segment.message}</p>}
           </div>
-          <button className='w-full p-3 bg-[rgb(22,156,18)] rounded text-white font-bold'>
-            RECEBER MAIS INFORMAÇÕES
-          </button>
+
+          {showCNPJInput && (
+            <div className='mb-4'>
+              <JoinUsInput
+                id="cnpj"
+                type='text'
+                errors={errors}
+                placeholder='CNPJ da empresa'
+                {...register('cnpj')}
+                mask="99.999.999/9999-99"
+              />
+            </div>
+          )}
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className='w-full py-3 rounded text-white rounded-lg bg-[rgb(22,156,18)]'
+          >
+            {isLoading ? 'Enviando...' : 'Enviar'}
+          </Button>
         </form>
       </div>
     </div>
