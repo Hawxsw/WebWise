@@ -307,7 +307,7 @@ export const Contact = () => {
           <Button
             type="submit"
             disabled={isLoading}
-            className='w-full py-3 rounded text-white bg-[#137a10] hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300'
+            className='w-full py-3 rounded text-white bg-[#169C12] hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300'
           >
             {isLoading ? 'Enviando...' : 'Enviar'}
           </Button>
