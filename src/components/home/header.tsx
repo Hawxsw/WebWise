@@ -13,7 +13,7 @@ export const Header = () => {
         </h1>
         <Link
           href="#contact"
-          className="block text-white bg-[#169C12] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto lg:mx-0 hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300"
+          className="block text-black bg-[#169C12] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto lg:mx-0 hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300"
         >
           Quero mais informações
         </Link>
