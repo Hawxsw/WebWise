@@ -43,6 +43,7 @@ export const Reunion = () => {
       <Link
         href='#contact'
         className='mt-8 block text-white bg-[rgb(22,156,18)] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto'
+        aria-label="Agendar uma reunião"
       >
         Agendar uma reunião
       </Link>

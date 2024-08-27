@@ -96,6 +96,8 @@ export const Method = () => {
         <Link
           href='#contact'
           className='text-white bg-[rgb(22,156,18)] border-0 text-[18px] lg:text-[22px] text-center rounded-lg cursor-pointer px-6 lg:px-8 py-4 w-full lg:w-auto max-w-[350px]'
+          aria-label="Quero mais informações"
+
         >
           Quero mais informações
         </Link>
