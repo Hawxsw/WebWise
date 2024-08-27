@@ -7,11 +7,9 @@ export const Whatsapp = () => {
       href="https://wa.me/5516997260636"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 left-4 bg-[rgb(22,156,18)] text-white rounded-full p-3 shadow-lg hover:bg-green-600 hover:shadow-xl hover:scale-105 hover:brightness-110 transition-all duration-300 ease-in-out"
-      aria-label="Entre em contato conosco pelo WhatsApp"
+      className="fixed bottom-4 left-4 bg-[#0e6b0b] text-white rounded-full p-3 shadow-lg hover:bg-[#0c5909] hover:shadow-xl hover:scale-105 hover:brightness-110 transition-all duration-300 ease-in-out focus:ring-4 focus:ring-green-300"
     >
       <FaWhatsapp size={24} className="transition-transform duration-300 ease-in-out hover:scale-110" />
-      <span className="sr-only">WhatsApp</span>
     </a>
   );
 };

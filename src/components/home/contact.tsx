@@ -223,13 +223,10 @@ export const Contact = () => {
                     onValueChange={field.onChange}
                     value={field.value}
                     disabled={field.disabled}
-                    aria-label="Selecione o faturamento mensal da sua empresa"
-                    aria-expanded="false"
-                    aria-controls="revenue-options"
-                    aria-haspopup="listbox"
-            
                   >
-                    <SelectTrigger className='w-full bg-white text-black p-2 border border-gray-300 rounded-md text-left sm:p-3'>
+                    <SelectTrigger
+                      aria-label="Selecione o faturamento mensal da sua empresa"
+                      className='w-full bg-white text-black p-2 border border-gray-300 rounded-md text-left sm:p-3'>
                       <SelectValue placeholder='Qual o faturamento mensal da sua empresa?' />
                     </SelectTrigger>
                     <SelectContent className='bg-white text-left z-50 absolute'>
@@ -263,13 +260,11 @@ export const Contact = () => {
                     }}
                     value={field.value}
                     disabled={field.disabled}
-                    aria-label="Selecione o segmento"
-                    aria-expanded="false"
-                    aria-controls="segmant-options"
-                    aria-haspopup="listbox"
-            
                   >
-                    <SelectTrigger className='w-full bg-white text-black p-2 border border-gray-300 rounded-md text-left sm:p-3'>
+                    <SelectTrigger
+                      aria-label="Selecione o seu segmento"
+                      className='w-full bg-white text-black p-2 border border-gray-300 rounded-md text-left sm:p-3'>
+
                       <SelectValue placeholder='Qual o seu segmento?' />
                     </SelectTrigger>
                     <SelectContent className='bg-white text-left z-50 absolute'>
@@ -312,10 +307,11 @@ export const Contact = () => {
           <Button
             type="submit"
             disabled={isLoading}
-            className='w-full py-3 rounded text-white rounded-lg bg-[rgb(22,156,18)]'
+            className='w-full py-3 rounded text-white bg-[#169C12] hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300'
           >
             {isLoading ? 'Enviando...' : 'Enviar'}
           </Button>
+
         </form>
       </div>
     </div>
