@@ -307,11 +307,10 @@ export const Contact = () => {
           <Button
             type="submit"
             disabled={isLoading}
-            className="block text-white bg-[#137a10] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto lg:mx-0 hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300"
-            >
+            className='w-full py-3 rounded text-white bg-[#137a10] hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300'
+          >
             {isLoading ? 'Enviando...' : 'Enviar'}
           </Button>
-
         </form>
       </div>
     </div>

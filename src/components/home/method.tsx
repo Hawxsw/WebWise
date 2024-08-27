@@ -93,7 +93,7 @@ export const Method = () => {
       <div className='flex justify-center mt-12'>
         <Link
           href='#contact'
-          className='text-black bg-[rgb(22,156,18)] border-0 text-[18px] lg:text-[22px] text-center rounded-lg cursor-pointer px-6 lg:px-8 py-4 w-full lg:w-auto max-w-[350px]'
+          className="block text-white bg-[#137a10] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto lg:mx-0 hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300"
         >
           Quero mais informações
         </Link>

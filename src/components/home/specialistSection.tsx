@@ -18,8 +18,8 @@ const SpecialistSection = () => {
         <div className="w-20 h-[2px] bg-[#e50914] mb-2 ml-[-90px] lg:ml-0"></div>
         <Link
           href='#contact'
-          className='mt-8 block text-black bg-[rgb(22,156,18)] border-0 text-[16px] lg:text-[20px] rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto'
-        >
+          className='mt-8 block text-white bg-[#137a10] border-0 text-[16px] lg:text-[20px] rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300'
+          >
           Falar com especialista
         </Link>
       </div>
