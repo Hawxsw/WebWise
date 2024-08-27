@@ -70,13 +70,12 @@ export const Method = () => {
             className='animate__animated animate__fadeInLeft rounded-[15%] bg-[#151515] border border-[rgb(38,38,38)] w-[240px] h-[160px] flex flex-col items-center justify-center cursor-default mb-6'
             onMouseEnter={() => handleTitleHover(index)}
             onMouseLeave={() => handleTitleHover(null)}
-            onMouseOut={() => handleTitleHover(null)}
-            onMouseOver={() => handleTitleHover(index)}
           >
             <span
               className={`text-[#e50914] text-lg sm:text-lg md:text-lg font-bold title ${
                 visibleIndex !== index ? 'block' : 'hidden'
               }`}
+              style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }} // Adicionando sombra ao texto vermelho
             >
               {method.attributes.title}
             </span>
@@ -95,7 +94,7 @@ export const Method = () => {
       <div className='flex justify-center mt-12'>
         <Link
           href='#contact'
-          className='text-white bg-[rgb(22,156,18)] border-0 text-[18px] lg:text-[22px] text-center rounded-lg cursor-pointer px-6 lg:px-8 py-4 w-full lg:w-auto max-w-[350px]'
+          className='text-black bg-[rgb(22,156,18)] border-0 text-[18px] lg:text-[22px] text-center rounded-lg cursor-pointer px-6 lg:px-8 py-4 w-full lg:w-auto max-w-[350px]'
         >
           Quero mais informações
         </Link>

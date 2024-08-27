@@ -18,7 +18,7 @@ export const WhyUs = () => {
       </div>
       <Link
         href="#contact"
-        className="mt-6 lg:mt-8 block text-white bg-[rgb(22,156,18)] border-0 text-[14px] lg:text-[16px] rounded-lg cursor-pointer px-4 lg:px-6 py-2 lg:py-3 w-full lg:w-auto max-w-[280px] lg:max-w-[300px] mx-auto"
+        className="mt-6 lg:mt-8 block text-black bg-[rgb(22,156,18)] border-0 text-[14px] lg:text-[16px] rounded-lg cursor-pointer px-4 lg:px-6 py-2 lg:py-3 w-full lg:w-auto max-w-[280px] lg:max-w-[300px] mx-auto"
       >
         Conectar meu marketing a WebWise
       </Link>
