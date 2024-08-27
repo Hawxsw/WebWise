@@ -39,11 +39,12 @@ export const Reunion = () => {
           </CardContent>
         </CardHeader>
       </Card>
-
       <Link
         href='#contact'
-        className='mt-8 block text-black bg-[rgb(22,156,18)] border-0 text-[16px] lg:text-[20px] text-center
-border-rounded-lg cursor-pointer px-4 lg
-py-3 w-full lg
-max-w-[300px] mx-auto' > Agendar uma reunião </Link> </div>);
+        className='mt-8 block text-white bg-[#158a0a] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:py-3 w-full lg:max-w-[300px] mx-auto hover:bg-[#0e6107] focus:ring-4 focus:ring-green-300'
+      >
+        Agendar uma reunião
+      </Link>
+    </div>
+  )
 };

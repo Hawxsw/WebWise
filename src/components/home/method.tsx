@@ -72,10 +72,9 @@ export const Method = () => {
             onMouseLeave={() => handleTitleHover(null)}
           >
             <span
-              className={`text-[#e50914] text-lg sm:text-lg md:text-lg font-bold title ${
+              className={`text-white text-lg sm:text-lg md:text-lg font-bold title ${
                 visibleIndex !== index ? 'block' : 'hidden'
               }`}
-              style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }} // Adicionando sombra ao texto vermelho
             >
               {method.attributes.title}
             </span>
