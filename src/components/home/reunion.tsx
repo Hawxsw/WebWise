@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const Reunion = () => {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-black space-y-8 py-8 px-4">
+    <div id='oqueafaz' className="flex flex-col justify-center items-center min-h-screen bg-black space-y-8 py-8 px-4">
       <Card
         className="relative flex flex-col md:flex-row items-center justify-between bg-[#121212] text-white p-8 rounded-[20px] md:rounded-[40px] shadow-lg border border-white transition-transform transform hover:scale-105 hover:shadow-2xl w-full max-w-[956px] md:max-h-[402px] h-auto"
       >
@@ -13,7 +13,7 @@ export const Reunion = () => {
           <h2 className="text-2xl sm:text-3xl mb-4 tracking-wide">Vamos projetar o marketing da sua empresa conforme a necessidade dela</h2 >
           <div className='w-[80px] sm:w-[120px] h-[4px] bg-[#e50914] mb-6 mx-auto md:mx-0'></div>
           <CardDescription className="text-base sm:text-lg leading-relaxed text-gray-300">
-            Tenha um braço a mais para ajudar seu time ou terceirize todo seu marketing com a V4. Dessa forma, você não se preocupa com contratação, gestão desse time, riscos trabalhistas e outras burocracias.
+            Tenha um braço a mais para ajudar seu time ou terceirize todo seu marketing com a webwise. Dessa forma, você não se preocupa com contratação, gestão desse time, riscos trabalhistas e outras burocracias.
           </CardDescription>
         </CardHeader>
         <CardHeader className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
@@ -41,7 +41,7 @@ export const Reunion = () => {
       </Card>
       <Link
         href='#contact'
-        className='mt-8 block text-white bg-[#158a0a] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:py-3 w-full lg:max-w-[300px] mx-auto hover:bg-[#0e6107] focus:ring-4 focus:ring-green-300'
+        className='mt-8 block text-white bg-[#137a10] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:py-3 w-full lg:max-w-[300px] mx-auto hover:bg-[#0e6107] focus:ring-4 focus:ring-green-300'
       >
         Agendar uma reunião
       </Link>
