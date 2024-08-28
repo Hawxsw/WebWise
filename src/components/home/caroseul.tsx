@@ -52,6 +52,7 @@ export const Caroseul = () => {
                   height={600}
                   src={image.src}
                   alt={image.alt}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className='rounded-[50px] shadow-lg border-[0.2px] border-gray-500'
                 />
               </CarouselItem>
@@ -66,8 +67,8 @@ export const Caroseul = () => {
         <Link
           href='#contact'
           className='mt-8 block text-white bg-[#137a10] border-0 text-[16px] lg:text-[20px] text-center rounded-lg cursor-pointer px-4 lg:px-6 py-3 w-full lg:w-auto max-w-[300px] mx-auto hover:bg-[#0c5909] focus:ring-4 focus:ring-green-300'
-          >
-           Impulsionar meu marketing
+        >
+          Impulsionar meu marketing
         </Link>
       </div>
     </div>
