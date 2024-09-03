@@ -113,7 +113,7 @@ export const Contact = () => {
   }
 
   return (
-    <div className='bg-[#131313] text-white flex flex-col lg:flex-row items-center lg:justify-between p-4 lg:p-6 w-full min-h-screen'>
+    <div id='contact' className='bg-[#131313] text-white flex flex-col lg:flex-row items-center lg:justify-between p-4 lg:p-6 w-full min-h-screen'>
       <div className='w-full lg:w-1/2 p-4 flex flex-col items-center lg:items-center'>
         <div>
           <h1 className='text-xl lg:text-2xl text-center lg:text-left mb-4'>
